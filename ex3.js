@@ -16,32 +16,10 @@ Promise.all([fsp.readFile(file1), fsp.readFile(file2)])
     });
     return fsp.writeFile(outputFile, allLines.join('\n'));
   })
+  .then(function() {
+    console.log('Successfully wrote the file!');
+  })
   .catch(function(err) {
     console.log('Something went wrong because', err.message);
+    console.log('Fix it on line: ', err.stack);
   });
-///////Old exercise
-// fs.readFile(file1, function(err, buffer) {
-//   if (err) {
-//     console.log('Something went wrong because', err.message);
-//     return;
-//   }
-//   var file1Lines = buffer.toString().split('\n');
-//   fs.readFile(file2, function(err, buffer) {
-//     if (err) {
-//       console.log('Something went wrong because', err.message);
-//       return;
-//     }
-//     var file2Lines = buffer.toString().split('\n');
-//     var allLines = [];
-//     file1Lines.forEach(function(line, idx) {
-//       allLines.push(line);
-//       allLines.push(file2Lines[idx]);
-//     });
-//     fs.writeFile(outputFile, allLines.join('\n'), function(err) {
-//       if (err) {
-//         console.log('Something went wrong because', err.message);
-//         return;
-//       }
-//     });
-//   });
-// });

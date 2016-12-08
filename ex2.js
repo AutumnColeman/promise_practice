@@ -12,5 +12,4 @@ fsp.readFile(filename)
   .catch(function(err) {
     console.log('Something went wrong.');
     console.log('Because: ', err.message);
-    return;
   });
